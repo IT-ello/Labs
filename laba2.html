@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style type="text/css">
+        table {
+            border: 4px double black;
+            background: rgb(202, 247, 244);
+        }
+        th {
+            border-bottom: 2px dotted black;
+        }
+    </style>
+    <title>Laba2</title>
+</head>
+<body>
+    <p>The average salary = <span id="result"></span></p>
+    <script>
+        let workers = [
+            {
+                name: 'Jim',
+                age: 40,
+                salary: 1100,
+            },
+            {
+                name: 'Ken',
+                age: 51,
+                salary: 1500,
+            },
+            {
+                name: 'Nick',
+                age: 37,
+                salary: 900,
+            },
+            {
+                name: 'Johny',
+                age: 58,
+                salary: 1700,
+            },
+        ];
+        const worker = (function () {
+            const fill = (workers) => {
+                let table = document.createElement('table');
+                let tr = document.createElement('tr');
+                table.appendChild(tr);
+                tr.appendChild(document.createElement('th'));
+                tr.appendChild(document.createElement('th'));
+                tr.appendChild(document.createElement('th'));
+                let i = 0;
+                table.rows[0].cells[i++].innerHTML = 'Name';
+                table.rows[0].cells[i++].innerHTML = 'Age';
+                table.rows[0].cells[i++].innerHTML = 'Salary';
+                let j;
+                i = 1;
+                document.body.appendChild(table);
+                workers.forEach(elem => {
+                    j = 0;
+                    let tr = document.createElement('tr');
+                    table.appendChild(tr);
+                    tr.appendChild(document.createElement('td'));
+                    tr.appendChild(document.createElement('td'));
+                    tr.appendChild(document.createElement('td'));
+                    table.rows[i].cells[j++].innerHTML = elem.name;
+                    table.rows[i].cells[j++].innerHTML = elem.age;
+                    table.rows[i++].cells[j++].innerHTML = elem.salary;
+                });
+                av_Salary();
+            };
+            const av_Salary = () => {
+                const table = document.querySelector('table');
+                const result = document.querySelector('#result');
+                let sum = 0;
+                Array.from(table.children).forEach((child, index) => {
+                    if (index !== 0) {
+                        sum += +child.lastElementChild.textContent;
+                    }
+                });
+                result.textContent = +(sum / workers.length).toFixed(2);
+            }
+            return {
+                fill
+            }
+        })();
+        worker.fill(workers);
+    </script>
+</body>
+</html>

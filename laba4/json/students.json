@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Artem",
+        "surname": "Shiroky",
+        "age": "18",
+        "averageMark": "6.3"
+    },
+    {
+        "name": "John",
+        "surname": "Cena",
+        "age": "43",
+        "averageMark": "10.0"
+    },
+    {
+        "name": "Bill",
+        "surname": "Gates",
+        "age": "65",
+        "averageMark": "4.0"
+    }
+]
